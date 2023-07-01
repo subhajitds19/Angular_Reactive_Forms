@@ -1,0 +1,40 @@
+<div class="container">
+<form [formGroup]="myForm" (ngSubmit)="submitValue()">
+    <div class="mb-3">
+    <label for="">Full Name</label>
+    <input type="text" class="form-control" formControlName="fname" >
+    <ng-container *ngIf="myForm.get('fname')?.touched">
+      <ng-container *ngIf="myForm.get('fname')?.hasError('required')">
+        <p>Required Field</p>
+      </ng-container>
+      <ng-container *ngIf="myForm.get('fname')?.hasError('pattern')">
+       <p>Wrong Pattern</p>
+      </ng-container>
+        
+    </ng-container>
+   </div>
+   <div class="mb-3">
+    <label for="">Email</label>
+    <input type="text" class="form-control" formControlName="email" >
+   </div>
+   <div class="mb-3">
+    <label for="">Password</label>
+    <input type="text" class="form-control" formControlName="pwd" >
+    </div>
+
+    <div class="mb-3">
+    <label for="">Gender</label>
+   Male <input type="radio" formControlName="male" value="male" id="">
+  Female  <input type="radio" formControlName="male" value="female" id="">
+  </div>
+  <div class="mb-3 col-md-3">
+  <select class="form-select" formControlName="city">
+    <option selected disabled value="">--Select--</option>
+    <option value="Kolkata">Kolkata</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Mumbai">Mumbai</option>
+  </select>
+</div>
+    <input type="submit" value="Add Data">
+</form>
+</div>

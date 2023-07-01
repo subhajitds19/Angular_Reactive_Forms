@@ -1,0 +1,31 @@
+<form [formGroup]="myForm" (ngSubmit)="submitData()">
+    <label for="">Full Name</label>
+    <input type="text" formControlName="fname" ><br><br>
+    <ng-container *ngIf="myForm.get('fname')?.touched && myForm.get('fname')?.hasError('required')">
+       <p>Required Field</p>
+    </ng-container>
+    <label for="">Email</label>
+    <input type="text" formControlName="email" ><br><br>
+    <ng-container *ngIf="myForm.get('email')?.touched">
+        <ng-container *ngIf="myForm.get('email')?.hasError('required')">
+          <p>Required Field</p>
+        </ng-container>
+        <ng-container *ngIf="myForm.get('email')?.hasError('minlength')">
+        <p>minimum length 10</p>
+        </ng-container>
+
+    </ng-container>
+
+    <label for="">Password</label>
+    <input type="text" formControlName="pwd" ><br><br>
+    <ng-container *ngIf="myForm.get('pwd')?.touched">
+        <ng-container *ngIf="myForm.get('pwd')?.hasError('required')">
+          <p>Required Field</p>
+        </ng-container>
+        <ng-container *ngIf="myForm.get('pwd')?.hasError('pattern')">
+        <p>wrong pattern</p>
+        </ng-container>
+
+    </ng-container>
+    <input type="submit" value="Add Data">
+</form>
